@@ -1,3 +1,5 @@
+import  CardWidget  from "./CardWidget"
+
 function NavBar(){
     return <header>
     <nav class="nav">            
@@ -16,6 +18,7 @@ function NavBar(){
                 <li ><a class="nav__link--blk nav__link--baseline" href="*">Productos</a></li>
                 <li><a class="nav__link--blk nav__link--baseline" href="*">Marcas</a></li>
                 <li><a class="nav__link--blk nav__link--baseline" href="*">Contacto</a></li>
+                <CardWidget/>
             </ul>
         </div>
     </nav>       

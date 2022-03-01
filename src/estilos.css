@@ -187,6 +187,19 @@ li {
     left: 0;
 }
 
+.btnCarrito{    
+    background-color: var(--secundario);
+    font-size: 1.5rem;
+    border: none;
+    height: 4rem;
+    width: 4rem;
+    margin-top: -1rem;
+    justify-content: center;    
+}
+.btnCarrito:hover{    
+    background-color: var(--primario);
+}
+
 @media (min-width: 820px) {
     .nav__cnt {
         flex-flow: row wrap;
@@ -218,3 +231,35 @@ li {
         width: 60%;
     }
 }
+/* --------------- CONTENIDO   --------------- */
+.contenido {
+    height: 40rem;
+    text-align: center;
+}
+
+/* --------------- FOOTER   --------------- */
+
+.footer {
+    background-color: var(--primario);
+    text-align: center;
+    padding: 1rem; }
+.footer p {
+    color: var(--blanco); }
+
+.footer__redes {
+    padding-bottom: 2rem; }
+.footer__redes a {
+    color: var(--secundario-os);
+    font-size: 2rem;
+    line-height: 2rem;
+    margin: 2rem; }
+.footer__redes a:hover {
+    color: var(--blanco); }
+
+.footer__nav a {
+    color: var(--blanco);
+    font-size: 1.2rem;
+    margin: 1rem; }
+
+.footer__nav a:hover {
+    color: var(--secundario-os); }
