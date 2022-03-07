@@ -1,10 +1,12 @@
 /*-------------------VARIABLES-------------------*/
 :root {
     --blanco: #ffffff;
+    --negro: #000000;
     --oscuro: #041C32;
     --oscuro-claro: #04293A;
     --primario: #064663;
     --secundario: #ECB365;
+    --gris: #dddddd;
 }
 
 * {
@@ -79,9 +81,8 @@ html {
 li,
 p {
     line-height: 1.5;
-    margin-bottom: 3rem;
-    padding: 1rem 0;
-    margin: 1rem 0;
+    padding: 0.5rem 0;
+    
 }
 
 img {
@@ -200,6 +201,28 @@ li {
     background-color: var(--primario);
 }
 
+.btnOriginal{
+    background-color: var(--secundario);
+    border-color: var(--secundario);
+    color: var(--blanco);
+}
+.btnOriginal:hover{    
+    background-color: var(--primario);
+    border-color: var(--primario);
+    color: var(--blanco);
+}
+
+.btnEspecial{
+    background-color: var(--blanco);
+    border-color: var(--secundario);
+    color: var(--secundario);
+}
+.btnEspecial:hover{    
+    background-color: var(--secundario);
+    border-color: var(--secundario);
+    color: var(--blanco);
+}
+
 @media (min-width: 820px) {
     .nav__cnt {
         flex-flow: row wrap;
@@ -236,7 +259,28 @@ li {
     height: 40rem;
     text-align: center;
 }
+/* --------------- CONTADOR   --------------- */
+.contador {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    width: 30rem;
+    height: 15rem;
+    background-color: var(--gris);
+    border: 1px solid;
+    border-color: var(--oscuro);
+    color: var(--oscuro);
+}
 
+.contador__numBar{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    text-align: center;
+    background-color: var(--blanco);
+    color: var(--negro);
+    height: 2.5rem;
+}
 /* --------------- FOOTER   --------------- */
 
 .footer {
