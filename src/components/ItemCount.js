@@ -29,14 +29,14 @@ export const ItemCount = (props) => {
                     <button class="btnOriginal btn btn-warning" onClick={restar}>-</button> 
                 </div>
                 
-                    <p>El contador es: {contador}</p>
+                    <p>{contador}</p>
                 
                 <div>
                 <button class="btnOriginal btn btn-warning" onClick={aumentar}>+</button>
                 </div>
                 
             </div>            
-            <button class="btnEspecial btn btn-warning" onClick={resetear}>Confirmar</button>
+            <button class="btnEspecial btn btn-warning" onClick={resetear}>Agregar al Carrito</button>
         </div>
 
     )

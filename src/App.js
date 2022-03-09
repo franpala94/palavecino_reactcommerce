@@ -1,4 +1,5 @@
 import Footer from "./components/Footer"
+import ItemListDetail from "./components/ItemDetailContainer"
 import ItemListContainer from "./components/ItemListContainer"
 import NavBar from "./components/NavBar"
 
@@ -7,6 +8,7 @@ function App () {
         <>
             <NavBar/>
             <ItemListContainer mensaje="Bienvenido" mensaje2="al ecommerce"/>
+            <ItemListDetail/>
             <Footer/>
         </>
     )
