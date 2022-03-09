@@ -9,11 +9,13 @@ export const Item = ({product}) => {
             <div class="productos__img">
                 <img src={product.img} alt={product.marca}/>
             </div>
-            <p>Precio: $ {product.precio}</p> 
-            <p>{product.descripcion}</p>
-            <button type="button" class="btnOriginal btn btn-warning" data-bs-toggle="modal" data-bs-target="#QAModal">
-                Ver Detalles
-            </button>
+            <div class="productos__descr d-flex flex-column justify-content-between">
+                <h1>$ {product.precio}</h1>
+                <button type="button" class="btnOriginal btn btn-warning" data-bs-toggle="modal" data-bs-target="#QAModal">
+                    Ver Detalles
+                </button>
+            </div>
+            
             
         </div>
 

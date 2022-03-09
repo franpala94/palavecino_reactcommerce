@@ -286,7 +286,14 @@ li {
 }
 
 .productos__img {
+    height: 50%;
     width: 12rem;
+    margin: auto;
+    padding: 1rem;
+}
+
+.productos__descr {
+    height: 40%;
     margin: auto;
     padding: 1rem;
 }
