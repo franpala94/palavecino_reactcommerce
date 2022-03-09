@@ -263,6 +263,7 @@ li {
 /* --------------- CONTENIDO   --------------- */
 .contenido {
     text-align: center;
+    padding: 2rem 0rem;
 }
 
 /* --------------- ITEMS   --------------- */
@@ -326,7 +327,7 @@ li {
     background-color: var(--primario);
     color: var(--blanco);
     width: 20rem;
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
 }
 .detalle__item--izq {
     
@@ -336,7 +337,7 @@ li {
     flex-direction: row;
     height: 50%;
     border: 1px solid var(--blanco);
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem;
 }
 .detalle__item--center {
     margin: auto;
