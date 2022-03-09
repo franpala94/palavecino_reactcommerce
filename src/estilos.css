@@ -7,6 +7,7 @@
     --primario: #064663;
     --primario-claro: #0f465f;
     --secundario: #ECB365;
+    --secundario-claro: #ffcb82;
     --gris: #dddddd;
 }
 
@@ -326,7 +327,7 @@ li {
     display: flex;
     flex-flow: row wrap;
     flex-direction: row;
-    height: 40%;
+    height: 50%;
     border: 1px solid var(--blanco);
     padding: 3rem 1rem;
 }
@@ -339,6 +340,26 @@ li {
     width: 100%;
     border: 1px solid var(--blanco);
 }
+
+.detalle__box--amarillo{
+    color: var(--blanco);
+    width: 4rem;
+    text-align: center;
+    height: 2rem;
+    padding: 0.5rem;
+    border: 1px solid var(--secundario);
+    border-radius: 10px;
+}
+
+.detalle__label--amarillo{
+    color: var(--secundario-claro);
+}
+
+.detalle__pagos{
+    font-size: 2rem;
+}
+
+
 
 /* --------------- CONTADOR   --------------- */
 .contador {
