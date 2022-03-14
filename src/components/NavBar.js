@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom"
 import  CardWidget  from "./CardWidget"
 
 function NavBar(){
     return <header>
     <nav class="nav">            
         <div class="nav__firma">
-            <a href="index.html">
+            <Link to="/">
                 <img src="logo1.png" alt=""></img>
-            </a>
+            </Link>
         </div>
         <div class="nav__cnt">
             
@@ -14,10 +15,10 @@ function NavBar(){
             <label class="nav__ico" for="btn-menu"><i class='bx bx-menu bx-flip-horizontal'  ></i></label>
             
             <ul class="nav__lista">
-                <li class="nav__despl"><a class="nav__link--blk nav__link--baseline" href="index.html">Home</a></li>                
-                <li ><a class="nav__link--blk nav__link--baseline" href="*">Productos</a></li>
-                <li><a class="nav__link--blk nav__link--baseline" href="*">Marcas</a></li>
-                <li><a class="nav__link--blk nav__link--baseline" href="*">Contacto</a></li>
+                <li class="nav__despl"><Link class="nav__link--blk nav__link--baseline" to="/categoria/procesador">Procesadores</Link></li>                
+                <li ><Link class="nav__link--blk nav__link--baseline" to="/categoria/placa de video">Placas de video</Link></li>
+                <li><Link class="nav__link--blk nav__link--baseline" to="/categoria/notebook">Notebook</Link></li>
+                <li><Link class="nav__link--blk nav__link--baseline" to="/categoria/motherboard">Motherboards</Link></li>
                 <CardWidget/>
             </ul>
         </div>

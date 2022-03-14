@@ -1,33 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail';
-
-let productosIniciales = 
-    {
-        marca: "AMD",
-        modelo: "Ryzen 5",
-        descripcion:"generacion 1600, frecuencia: 3.6ghz, nucleos: 6",
-        stock: 5,
-        precio: 29999,
-        img:"https://www.venex.com.ar/products_images/1506966323_crop410_11157ryzen5pibleftfacing1260x709.png",
-        id: 0,
-        category: "procesador"
-    };
+import { useParams } from "react-router-dom";
+import productosIniciales from "../data/productos.json";
 
 
 export const ItemListDetail = (props) => {
     const [loading, setLoading] = useState(true)
     const [productos, setProductos] = useState([])
+    const {id} = useParams()
 
     useEffect(()=>{
 
         const promesa = new Promise((res,rej)=>{
             setTimeout(()=>{
-                res(productosIniciales)
-            },2000)
+                const prod = productosIniciales.find(p => p.id === parseInt(id))
+                res(prod)
+            },1000)
         })
 
         promesa.then((respuestaDeLaApi)=>{
-            setProductos(productosIniciales)
+            setProductos(respuestaDeLaApi)
         }).catch((errorDeLaApi)=>{
             console.log(errorDeLaApi)
         }).finally(()=>{

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const Item = ({product}) => {
     return (
@@ -11,9 +12,9 @@ export const Item = ({product}) => {
             </div>
             <div class="productos__descr d-flex flex-column justify-content-between">
                 <h1>$ {product.precio}</h1>
-                <button type="button" class="btnOriginal btn btn-warning" data-bs-toggle="modal" data-bs-target="#QAModal">
+                <Link to= {`/item/${product.id}`} class="btnOriginal btn btn-warning">
                     Ver Detalles
-                </button>
+                </Link>
             </div>
             
             
