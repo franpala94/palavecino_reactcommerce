@@ -5,7 +5,7 @@ export const CardWidget = () => {
     return (
         
         <li>
-            <Link class="nav__link--blk nav__link--baseline" to="/categoria/5">
+            <Link class="nav__link--blk nav__link--baseline" to="/carrito">
                 <div>
                     <button type="button" id="btnCarrito" class="btnCarrito btn btn-warning" data-toggle="modal" data-target="#modalCarrito"><i class='bx bx-cart-alt'></i></button>
                 </div> 

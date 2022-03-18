@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import ItemCount from './ItemCount'
+import { contexto } from "./CartContext"
 
 export const ItemDetail = ({product}) => {
+    const [ICount, setICount] = useState(true)
+
     let cuotas = product.precio/12
+    const resultado = useContext(contexto)
+
+    const onAdd = (cantidad) => {
+        resultado.agregarItem(product, cantidad)
+        setICount(false)
+    }
 
     return (
         
@@ -28,7 +37,7 @@ export const ItemDetail = ({product}) => {
                     </div>
                 </div>
                 
-                <ItemCount stock={product.stock} initial={1}/>
+                {ICount ? <ItemCount stock={product.stock} initial={1} onAdd={onAdd}/> : <div class="contador"> <h3 class="detalle__label--amarillo">Producto agregado</h3> </div>}
                 <div class="d-flex flex-row justify-content-center">
                     <i class='bx bx-check-shield detalle__pagos' ></i>
                     <p>Compra protegida</p>

@@ -16,6 +16,7 @@ export const ItemCount = (props) => {
         
     }
     const resetear = () => {
+        props.onAdd(contador)
         setContador(1)
     }
     return (

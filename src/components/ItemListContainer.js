@@ -38,7 +38,7 @@ export const ItemListContainer = (props) => {
     return (
         
         <div class="contenido">
-            <h1>{props.mensaje} {props.mensaje2}</h1>
+            <h1>Bienvenidos a Pro Gaming</h1>
             
             <p>{loading ? "Cargando, por favor espere.." : "Productos cargados"}</p>
             <ItemList products={productos}/>
