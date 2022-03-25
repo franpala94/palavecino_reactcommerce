@@ -5,6 +5,7 @@ import ItemListContainer from "./components/ItemListContainer"
 import NavBar from "./components/NavBar"
 import MiProvider from "./components/CartContext"
 import Carrito from "./components/Carrito"
+import Checkout from "./components/Checkout"
 
 
 function App () {
@@ -16,7 +17,8 @@ function App () {
                     <Route path='/' element={<ItemListContainer mensaje="Bienvenido" mensaje2="al ecommerce"/>}/>
                     <Route path='/categoria/:id' element={<ItemListContainer mensaje="Bienvenido" mensaje2="al ecommerce"/>}/>
                     <Route path='/carrito' element={<Carrito/>}/>
-                    <Route path='/item/:id' element={<ItemListDetail/>}/>                
+                    <Route path='/item/:id' element={<ItemListDetail/>}/>
+                    <Route path='/checkout' element={<Checkout/>}/>                
                 </Routes>
                 <Footer/>
             </BrowserRouter>

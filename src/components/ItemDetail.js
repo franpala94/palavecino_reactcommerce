@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import ItemCount from './ItemCount'
 import { contexto } from "./CartContext"
+import { Link } from 'react-router-dom'
 
 export const ItemDetail = ({product}) => {
     const [ICount, setICount] = useState(true)
@@ -37,7 +38,7 @@ export const ItemDetail = ({product}) => {
                     </div>
                 </div>
                 
-                {ICount ? <ItemCount stock={product.stock} initial={1} onAdd={onAdd}/> : <div class="contador"> <h3 class="detalle__label--amarillo">Producto agregado</h3> </div>}
+                {ICount ? <ItemCount stock={product.stock} initial={1} onAdd={onAdd}/> : <div class="contador__agregado"> <h3 class="detalle__label--amarillo">Producto agregado</h3> <Link class="nav__link--blk" to="/carrito"><h3 class="detalle__label--amarillo">Ir al Carrito</h3></Link>  </div>}
                 <div class="d-flex flex-row justify-content-center">
                     <i class='bx bx-check-shield detalle__pagos' ></i>
                     <p>Compra protegida</p>

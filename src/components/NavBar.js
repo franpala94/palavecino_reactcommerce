@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom"
 import  CardWidget  from "./CardWidget"
+import { useContext } from "react"
+import { contexto } from "./CartContext"
 
 function NavBar(){
+    const resultado = useContext(contexto)
+    const cartVisible = resultado.cartVisible
+
     return <header>
     <nav class="nav">            
         <div class="nav__firma">
@@ -19,7 +24,7 @@ function NavBar(){
                 <li ><Link class="nav__link--blk nav__link--baseline" to="/categoria/placa de video">Placas de video</Link></li>
                 <li><Link class="nav__link--blk nav__link--baseline" to="/categoria/notebook">Notebook</Link></li>
                 <li><Link class="nav__link--blk nav__link--baseline" to="/categoria/motherboard">Motherboards</Link></li>
-                <CardWidget/>
+                {cartVisible ? <CardWidget/> : <></>}
             </ul>
         </div>
     </nav>       

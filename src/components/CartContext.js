@@ -6,26 +6,45 @@ const{ Provider } = contexto
 const CartContext = ({children}) => {
 
     const [carrito,setCarrito] = useState([])
-    const [total,setTotal] = useState(0)
+    const [cantItems,setCantItems] = useState(0)
+    const [cartVisible, setCartVisible] = useState(false)
 
     const borrarItem = (id) => {
         const carritoFiltrado = carrito.filter (prod => prod.id !== id)
         setCarrito(carritoFiltrado)
+        let c = updateCantItem(carritoFiltrado)
+        setCantItems(c)
+        visible(carritoFiltrado)
+    }
+    
+    const visible = (array) => {
+        let i = 0
+        array.forEach(function(item) {
+            i = i + 1
+        })
+        if (i>0) {
+            setCartVisible(true)
+        } else {
+            setCartVisible(false)
+        }
     }
     
     const agregarItem = (producto,cantidad) => {
-        console.log("agregar")
+        let CI = cantItems + cantidad
+        setCantItems(CI)
         const productoAgregar = {
             ...producto,
             cantidad
         }
 
         isInCart(producto.id) ? updateItem(productoAgregar) : addItem(productoAgregar)
-        console.log(carrito)
+        setCartVisible(true)
     }
 
     const limpiarItems = () => {
         setCarrito([])
+        setCantItems(0)
+        setCartVisible(false)
     }
 
     const isInCart = (id) => {
@@ -44,7 +63,7 @@ const CartContext = ({children}) => {
                 return prod
             }
         })
-        setCarrito(updateCart)        
+        setCarrito(updateCart)      
     }
 
     const addItem = (productoAgregar) => {
@@ -52,10 +71,20 @@ const CartContext = ({children}) => {
         setCarrito(add)
         
     }
+    const updateCantItem = (carro) => {
+        let c = 0
+        for (let i = 0; i < carro.length; i++) {
+            c = c + carro[i].cantidad
+            
+        }
+        return c
+    }
+    
 
     const valorDelContexto = {
-        total,
         carrito,
+        cantItems,
+        cartVisible,
         borrarItem : borrarItem,
         limpiarItems : limpiarItems,
         agregarItem : agregarItem

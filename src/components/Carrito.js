@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { Link } from "react-router-dom"
 import { contexto } from "./CartContext"
 
 
@@ -6,11 +7,9 @@ const Carrito = () => {
 
     const resultado = useContext(contexto)
     const carrito = resultado.carrito
-    const total = resultado.total
+    const cartVisible = resultado.cartVisible
     let totalcolumn = 0
-
-    console.log(carrito)
-
+    let cantItems = 0
 
     const borraItem = (id) => {
         resultado.borrarItem(id)
@@ -46,6 +45,7 @@ const Carrito = () => {
                         </div>
                     </div>
                 {carrito.map(item => {
+                    cantItems ++
                     let precioRow = item.cantidad*item.precio
                     totalcolumn += precioRow
                     return (
@@ -70,6 +70,7 @@ const Carrito = () => {
                         </div>
                     </div>)                    
                 })}
+                {cantItems===0 ? <div class="contador__agregado"> <h3>No hay productos agregados</h3> <Link class="nav__link--blk" to="/"><h3 class="detalle__label--amarillo">Ir de compras</h3></Link>  </div> : <></>}
             </div>
             <div class="carrito__titulos">
                 <div class="d-flex flex-row justify-content-center">
@@ -78,7 +79,10 @@ const Carrito = () => {
                 </div>
                 
                 <h3>Total: $ {totalcolumn}</h3>
-            </div>        
+            </div>
+            <div>
+                {cartVisible? <Link class="btnOriginal btn btn-warning" to="/checkout">Terminar Compra</Link> : <></>}
+            </div>
             
         </div>
         
