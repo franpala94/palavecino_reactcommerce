@@ -1,9 +1,10 @@
-//import ItemCount from "./ItemCount"
-//<ItemCount onAdd={onAdd} titulo="Contador" stock={5} initial={1}/>
 import ItemList from "./ItemList"
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
-import productosIniciales from "../data/productos.json"
+//import productosIniciales from "../data/productos.json"
+import { db } from "../Firebase";
+import { collection, getDocs, query, where} from "firebase/firestore";
+
 
 
 export const ItemListContainer = (props) => {
@@ -12,26 +13,33 @@ export const ItemListContainer = (props) => {
     const [productos, setProductos] = useState([])
     const {id} = useParams()
     
-    
+    console.log(id)
 
     useEffect(()=>{
 
-        const promesa = new Promise((res,rej)=>{
-            setTimeout(()=>{
-                console.log(id)
-                const productsToResolve = id ? productosIniciales.filter(item => item.category === id) : productosIniciales
-                res(productsToResolve)
-            },1000)
-        })
+        if (!id) {
+            const prodCollection = collection(db, "productos")
+            const documentos = getDocs(prodCollection)
 
-        promesa.then((respuestaDeLaApi)=>{
-            setProductos(respuestaDeLaApi)
-        }).catch((errorDeLaApi)=>{
-            console.log(errorDeLaApi)
-        }).finally(()=>{
-            setLoading(false)
-        })
+            documentos.then(respuesta => setProductos(respuesta.docs.map(doc => doc.data())))
+            .catch((errorDeLaApi) => {
+                console.log(errorDeLaApi)
+            }).finally(() => {
+                setLoading(false)
+            })
 
+        }else {
+            const prodCollection = collection(db, "productos")
+            const miFiltro = query(prodCollection, where("category", "==",id))
+            const documentos = getDocs(miFiltro)
+
+            documentos.then(respuesta => setProductos(respuesta.docs.map(doc => doc.data())))
+            .catch((errorDeLaApi) => {
+                console.log(errorDeLaApi)
+            }).finally(() => {
+                setLoading(false)
+            })
+        }
         
     },[id])
     

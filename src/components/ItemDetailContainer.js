@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail';
 import { useParams } from "react-router-dom";
-import productosIniciales from "../data/productos.json";
+// import productosIniciales from "../data/productos.json";
+import { db } from "../Firebase";
+import { collection, getDocs, query, where} from "firebase/firestore";
 
 
 export const ItemListDetail = (props) => {
@@ -11,23 +13,17 @@ export const ItemListDetail = (props) => {
 
     useEffect(()=>{
 
-        const promesa = new Promise((res,rej)=>{
-            setTimeout(()=>{
-                const prod = productosIniciales.find(p => p.id === parseInt(id))
-                res(prod)
-            },1000)
-        })
+        const prodCollection = collection(db, "productos")
+        const miFiltro = query(prodCollection, where("id", "==",Number(id)))
+        const documentos = getDocs(miFiltro)
 
-        promesa.then((respuestaDeLaApi)=>{
-            setProductos(respuestaDeLaApi)
-        }).catch((errorDeLaApi)=>{
+        documentos.then(respuesta => setProductos(respuesta.docs.map(doc => doc.data())[0]))
+        .catch((errorDeLaApi) => {
             console.log(errorDeLaApi)
-        }).finally(()=>{
+        }).finally(() => {
             setLoading(false)
         })
-
-        
-    })
+    },[id])
     console.log(productos)
     return (
         
