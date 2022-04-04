@@ -10,7 +10,7 @@ export const ItemCount = (props) => {
         }    
     }
     const restar = () => {
-        if (contador > 0) {
+        if (contador > 1) {
             setContador(contador - 1)
         }
         
