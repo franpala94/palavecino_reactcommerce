@@ -1,6 +1,8 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { contexto } from "./CartContext"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Carrito = () => {
@@ -13,13 +15,32 @@ const Carrito = () => {
 
     const borraItem = (id) => {
         resultado.borrarItem(id)
+        toast.success('Item eliminado', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
     }
     const limpiaItems = () => {
         resultado.limpiarItems()
+        toast.success('Todos los items fueron eliminados', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
     }
 
     return (
         <div class="carrito">
+            <ToastContainer />
             <div class="carrito__titulos">
                 <h2>Carrito</h2>
             </div>

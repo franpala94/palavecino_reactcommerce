@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import ItemCount from './ItemCount'
 import { contexto } from "./CartContext"
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ItemDetail = ({product}) => {
     const [ICount, setICount] = useState(true)
@@ -12,6 +14,15 @@ export const ItemDetail = ({product}) => {
     const onAdd = (cantidad) => {
         resultado.agregarItem(product, cantidad)
         setICount(false)
+        toast.success(`Producto agregado:${product.marca} ${product.modelo}`, {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
     }
 
     return (
@@ -49,6 +60,7 @@ export const ItemDetail = ({product}) => {
                     <p>{product.descripcion}</p>
                 </div> 
             </div>
+            <ToastContainer />
         </div>
 
     )

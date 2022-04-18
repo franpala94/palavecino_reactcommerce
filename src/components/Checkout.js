@@ -3,6 +3,8 @@ import { contexto } from "./CartContext"
 import { db } from "../Firebase";
 import { collection, addDoc, serverTimestamp} from "firebase/firestore";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Checkout = () => {
 
@@ -25,9 +27,18 @@ const Checkout = () => {
             total : total
         }
         const ordenesCollection = collection(db, "ordenes")
-        const pedido = addDoc(ordenesCollection, orden)
-        resultado.limpiarItems()
-        
+        addDoc(ordenesCollection, orden).then(({id}) => {
+            toast.success(`Pedido exitoso. Orden:${id}`, {
+                position: "bottom-left",
+                autoClose: 10000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            resultado.limpiarItems()
+        })
     }
     
 
@@ -42,7 +53,7 @@ const Checkout = () => {
                     <h2>Confirmar compra</h2>
                 </div>
                 <div class="row carrito__container">
-                    <legend class="text-center header">Completa Con tus datos</legend>
+                    <legend class="text-center header compra__titulos">Completa Con tus datos</legend>
                     <div class="carrito__container col">                    
                         {carrito.map(item => {
                             cantItems ++
@@ -64,7 +75,7 @@ const Checkout = () => {
                                 </div>
                             </div>)                    
                         })}
-                        <h3>Total: $ {totalcolumn}</h3>
+                        <h3 class="compra__titulos">Total: $ {totalcolumn}</h3>
                     </div>
                     <div class="container col">
                         <div class="row">
@@ -110,11 +121,11 @@ const Checkout = () => {
                     
                 </div>
                 <div>
-                    <button onClick={() => finalizaCompra(totalcolumn)} class="btn btn-warning">Finalizar compra</button>
+                    <button onClick={() => finalizaCompra(totalcolumn)} class="btn btn-warning compra__titulos">Finalizar compra</button>
                 </div>
             </div>
-            : <div class="contador__agregado"> <h3 class="detalle__label--amarillo">Su pedido fue enviado con éxito</h3> <h3 class="detalle__label--amarillo">Gracias por su compra</h3> <Link class="nav__link--blk" to="/"><h3 class="detalle__label--amarillo">Ir a inicio</h3></Link>  </div>}
-            
+            : <div class="compraFinalizada"> <h3 class="detalle__label--amarillo">Su pedido fue enviado con éxito</h3><h3 class="detalle__label--amarillo">Gracias por su compra</h3> <Link class="nav__link--blk" to="/"><h3 class="detalle__label--amarillo">Ir a inicio</h3></Link>  </div>}
+            <ToastContainer />
         </div>
     )
 }

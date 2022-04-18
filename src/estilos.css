@@ -331,6 +331,20 @@ li {
     margin: auto;
 }
 
+.compra__titulos{
+    margin: 2rem 0;
+}
+
+.compraFinalizada{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    width: 100%;
+    height: 10rem;    
+    color: var(--oscuro);
+    height: 35rem;
+}
+
 /* --------------- ITEMS   --------------- */
 .productos {
     display: flex;
