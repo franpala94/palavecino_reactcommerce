@@ -3,7 +3,7 @@
 ## Documentacion del Proyecto:
 Ecommerce desarrollado para ProGaming, pagina dedicada a la venta de Hardware para PC.
 
-![DemoGif](https://imgkub.com/image/RvRXo)
+[![Demo-React.gif](https://i.postimg.cc/yxFYsVXJ/Demo-React.gif)](https://postimg.cc/9wQjBHkV)
 
 ## Ejecutar la aplicacion: 
 1º- Abrir nueva terminal y clonar el repositorio con:
